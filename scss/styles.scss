@@ -469,12 +469,9 @@ bottom: -130px;
     }
 
 
-    /* Estilos para a nova parte inferior da seção de soluções */
+   
     .solution-bottom-content {
-        // O fundo e padding globais já estão no .solutions-section.
-        // Se quiser um fundo diferente APENAS para essa sub-seção, adicione aqui.
-        // Por exemplo: background: linear-gradient(135deg, $light-blue-bg 0%, $lighter-blue-bg 100%);
-        // Mas o pedido foi para CONSOLIDAR, então o background de solutions-section deve cobrir tudo.
+  
         padding-top: 50px; // Adiciona um espaçamento entre os cards e esta nova seção
         padding-bottom: 0; // O padding da .solutions-section já cuidará disso.
 
@@ -804,14 +801,14 @@ bottom: -130px;
 .about-us-section-title {
     font-size: 1.5rem;
     font-weight: 700;
-    color: $about-us-primary-blue;
+    color: $primary-blue;
     margin-bottom: 1.5rem;
 }
 
 .about-us-section-text {
     font-size: 1rem;
     line-height: 1.7;
-    color: $about-us-text-dark;
+    color: $dark-blue;
     margin-bottom: 1rem;
 }
 
@@ -821,14 +818,14 @@ bottom: -130px;
     .about-us-value-item-title {
         font-size: 1.1rem;
         font-weight: 600;
-        color: $about-us-primary-blue;
+        color: $primary-blue;
         margin-bottom: 0.8rem;
     }
 
     .about-us-value-item-text {
         font-size: 0.95rem;
         line-height: 1.6;
-        color: $about-us-text-dark;
+        color: $dark-blue;
     }
 }
 
@@ -1200,7 +1197,7 @@ bottom: -130px;
 
             li {
                 font-size: $font-size-md;
-                color: $text-dark;
+                color: $black;
                 margin-bottom: 5px;
                 text-align: left;
                 display: flex;
@@ -1481,7 +1478,7 @@ bottom: -130px;
     }
 
     .footer-divider {
-        border-top: 1px solid rgba($about-us-text-light, 0.3); // Light divider
+        border-top: 1px solid rgba($black, 0.3); // Light divider
         margin-bottom: 20px; // Space below divider
     }
 
