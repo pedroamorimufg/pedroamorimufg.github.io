@@ -50,8 +50,8 @@
 // Variáveis de Cores
 $primary-blue: #0086CD;
 $dark-blue: #00336A;
-$blue-bg:#004899;
-$black: #222222; 
+$blue-bg: #004899;
+$black: #222222;
 $light-blue-bg: #e3f2fd; // Fundo azul claro
 $lighter-blue-bg: #bbdefb; // Fundo azul mais claro (de um gradiente)
 $white: #fff;
@@ -63,7 +63,7 @@ $gold-bg: #C9B64F;
 $platinum-bg: #0086CD;
 
 $text-dark: #333;
-$text-medium: #666;
+$text-medium: #3C3C3B;
 $bootstrap-info-blue: #42a5f5; // Azul mais claro do gradiente dos ícones
 
 
@@ -84,8 +84,8 @@ $api-prolynk-card-bg: #F8F9FA; // Um cinza claro para o fundo dos cards da API
 // Variáveis de Fontes
 $font-family-base: Avenir, Tahoma, Geneva, Verdana, sans-serif;
 $font-size-xs: 1em;
-$font-size-sm: 1.4em;
-$font-size-md: 1.6em; // 1rem
+$font-size-sm: 1.6em;
+$font-size-md: 1.8em; // 1rem
 $font-size-lg: 2.2em;
 $font-size-xl: 3.6em;
 $font-size-2xl: 4.8em;
@@ -114,7 +114,8 @@ $transition-speed: 0.3s ease;
 }
 
 html {
-    font-size: 62.5%; /* 62.5% de 16px = 10px */
+    font-size: 62.5%;
+    /* 62.5% de 16px = 10px */
 }
 
 
@@ -122,7 +123,7 @@ body {
     font-family: $font-family-base;
     margin: 0;
     padding: 0;
-    line-height: 1.4;    
+    line-height: 1.4;
 }
 
 /* Top contact bar */
@@ -152,7 +153,7 @@ body {
     z-index: 1000;
 
     &.fixed-top {
-        background: rgba(0,25,62, 0.8);
+        background: rgba(0, 25, 62, 0.8);
         backdrop-filter: blur(10px);
         padding: 15px 0;
         box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
@@ -171,13 +172,25 @@ body {
     &-nav {
         .nav-link {
             color: $white !important;
-            font-weight: 500;
+            font-weight: 300;
             margin: 0 15px;
             transition: opacity $transition-speed;
-            font-size: $font-size-md;
-            &:hover {
-                opacity: 0.8;
+            font-size: $font-size-sm;
+            opacity: .8;
+            &::after {
+                content: ' ';
+                display: inline-block;
+                width: 30px;
+                height: 13px;
+                background: url(/assets/img/icon-nav-arrow.png) no-repeat right center;
             }
+            &:hover {
+                opacity: 1;
+            }
+        }
+        .nav-item:last-child .nav-link::after {
+                display: none;
+
         }
     }
 
@@ -192,10 +205,11 @@ body {
 }
 
 .btn-demo {
-    @include button-styles(transparent, 1px solid rgba($white, 0.5), $white, 10px 25px, 25px, $font-size-md, normal);
+    @include button-styles($primary-blue, 0, $white, 10px 25px, 10px, $font-size-sm, normal);
 
     &:hover {
-        background: rgba($white, 0.1);
+        opacity: .8!important;
+        background: $primary-blue;
         color: $white;
     }
 }
@@ -211,7 +225,7 @@ body {
 
 /* Hero content */
 .hero-content {
-    padding: 120px 0 80px;
+    padding: 25px 0 80px;
     position: relative;
     z-index: 2;
 }
@@ -225,7 +239,7 @@ body {
 
     .highlight {
         font-weight: 700;
-        font-size: $font-size-md!important;
+        font-size: $font-size-md !important;
     }
 }
 
@@ -237,39 +251,140 @@ body {
 }
 
 .btn-cta {
-    @include button-styles(transparent, 2px solid rgba($white, 0.5), $white, 15px 30px, 30px, $font-size-lg, 300);
-
+    @include button-styles(linear-gradient(90deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.2) 100%), none, $white, 15px 30px, 10px, $font-size-md, 300);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
     &:hover {
-        background: rgba($white, 0.1);
-        color: $white;
-        border-color: rgba($white, 0.8);
+background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.3) 100%);
+  //transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     }
 }
 
 /* Hero image and cards section */
 .hero-visual {
+    display: flex;
+    align-items: center;
     position: relative;
-    height: 500px;
 }
 
 .hero-image-placeholder {
-    width: 792px;
-    height: 732px;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    width: 490px;
+    height: 636px;
+    margin-left: 20px;
+}
+
+/*==============================================
+// Messaging Card 3D Transform Styles
+==============================================*/
+.messaging-card {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 30px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: none;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: transform 0.1s ease-out;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    z-index: 10;
+    position: absolute;
+    padding: 2.5em;
+    max-width: 230px;
+    // CSS custom properties for dynamic transforms
+    --rotateX: 0deg;
+    --rotateY: 0deg;
+    --scale: 1;
+
+    &-1 {
+        left: 0px;
+        top: 340px;
+    }
+
+    &-2 {
+        left: 415px;
+        top: 90px;
+    }
+    &:hover {
+        transform:
+            perspective(1000px) rotateX(var(--rotateX)) rotateY(var(--rotateY)) scale(var(--scale));
+        box-shadow:
+            0 20px 40px rgba(31, 38, 135, 0.15),
+            0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+
+    .messaging-card-title {
+        font-size: 2.2em;
+        font-weight: 500;
+        color: $white;
+        line-height: 1.5;
+        transform: translateZ(20px);
+        transition: transform 0.1s ease-out;
+    }
+
+    .messaging-card-description {
+        font-size: 1.1em;
+        color: $white;
+        font-weight: 300;
+        margin-top: 0.5em;
+        line-height: 1.8;
+        transform: translateZ(10px);
+        transition: transform 0.1s ease-out;
+    }
+
+    // Enhanced hover effects for text elements
+    &:hover .messaging-card-title {
+        transform: translateZ(30px);
+    }
+
+    &:hover .messaging-card-description {
+        transform: translateZ(20px);
+    }
 }
 
+.messaging-card-3 {
+    border: none;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s ease-out;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    z-index: 10;
+    position: absolute;
+    max-width: 120px;
+    max-height: 78px;
+    bottom: 35px;
+  right: 130px;
+    .messaging-card-title {
+        font-size: 2.2em;
+        font-weight: 500;
+        color: $white;
+        line-height: 1.5;
+        transform: translateZ(20px);
+        transition: transform 0.1s ease-out;
+    }
+
+    .messaging-card-description {
+        font-size: 1.1em;
+        color: $white;
+        font-weight: 300;
+        margin-top: 0.5em;
+        line-height: 1.8;
+        transform: translateZ(10px);
+        transition: transform 0.1s ease-out;
+    }
+}
 
 
 /* Responsive design */
-@media (max-width: 1200px) {
-
-}
+@media (max-width: 1200px) {}
 
 @media (max-width: 992px) {
     .hero-visual {
@@ -300,22 +415,25 @@ body {
         font-size: $font-size-3xl;
     }
 }
+
 /* Solutions Section (Consolidated) */
 .solutions-section {
     background: $light-gray-bg; // Mantém o fundo da seção original
     padding: 80px 0; // Mantém o padding da seção original
     position: relative; // Added for positioning carousel controls
     background: url(../assets/img/solutions-bg.png) no-repeat center bottom / cover;
-            .solution-bottom-image-underlay {
-            position: absolute;
-            background: url('../assets/img/solution-img-underlay.png') no-repeat center center / cover;
-            width: 447px;
-            height: 600px;
-bottom: -130px;
-  left: 0;
-            display: block;
-            z-index: 1;
-        }
+
+    .solution-bottom-image-underlay {
+        position: absolute;
+        background: url('../assets/img/solution-img-underlay.png') no-repeat center center / cover;
+        width: 447px;
+        height: 600px;
+        bottom: -130px;
+        left: 0;
+        display: block;
+        z-index: 1;
+    }
+
     .solutions-header {
         margin-bottom: 50px;
     }
@@ -326,24 +444,27 @@ bottom: -130px;
         color: $dark-blue;
         margin-bottom: 20px;
         line-height: 1;
+        text-align: center;
 
-        .highlight {
-        }
+        .highlight {}
     }
 
     .solutions-subtitle {
         font-size: $font-size-xl;
         font-weight: 400;
         color: $primary-blue;
-        margin-bottom: 20px;
+        margin-bottom: 50px;
         line-height: 1.1;
+        text-align: center;
     }
 
     .solutions-description {
         font-size: $font-size-md; // 1rem
-        color: $dark-blue;
+        color: $text-medium;
         line-height: 1.6;
         margin-bottom: 0;
+        text-align: center;
+        padding: 0 260px;
     }
 
 
@@ -395,7 +516,7 @@ bottom: -130px;
 
         .card-description {
             font-size: $font-size-md;
-            color: $dark-blue;
+            color: $text-medium;
             line-height: 1.5;
             margin-bottom: 0;
         }
@@ -412,11 +533,13 @@ bottom: -130px;
     }
 
     .carousel-item {
-        padding: 0 25px; // Add some horizontal padding to the carousel item to create spacing
+        padding: 0 35px; // Add some horizontal padding to the carousel item to create spacing
+
         .row {
             margin-left: -25px; // Counteract default Bootstrap col padding and increase
             margin-right: -25px; // Counteract default Bootstrap col padding and increase
-            > div {
+
+            >div {
                 padding-left: 25px; // Custom padding for columns to control card spacing
                 padding-right: 25px; // Custom padding for columns to control card spacing
             }
@@ -426,7 +549,6 @@ bottom: -130px;
     .carousel-control-prev,
     .carousel-control-next {
         position: absolute;
-        top: -430px; // Adjusted: 120px above the carousel container
         width: auto;
         opacity: 1; // Always visible when shown
         color: $primary-blue; // Color of the arrow icon
@@ -440,10 +562,11 @@ bottom: -130px;
             color: $dark-blue;
             transform: scale(1.1);
         }
-        
+
         .carousel-control-prev-icon,
         .carousel-control-next-icon {
             background-image: none; // Remove default Bootstrap arrow image
+
             &::before {
                 font-family: "Font Awesome 6 Free"; // Use Font Awesome
                 font-weight: 900;
@@ -453,25 +576,26 @@ bottom: -130px;
     }
 
     .carousel-control-prev {
-        right: 65px; // Position right, adjust as needed
         left: auto; // Override default left positioning
+
         .carousel-control-prev-icon::before {
             content: "\f053"; // Font Awesome chevron-left icon
         }
     }
 
     .carousel-control-next {
-        right: 15px; // Position right, adjust as needed
+        // Position right, adjust as needed
         left: auto; // Override default left positioning
+
         .carousel-control-next-icon::before {
             content: "\f054"; // Font Awesome chevron-right icon
         }
     }
 
 
-   
+
     .solution-bottom-content {
-  
+
         padding-top: 50px; // Adiciona um espaçamento entre os cards e esta nova seção
         padding-bottom: 0; // O padding da .solutions-section já cuidará disso.
 
@@ -499,7 +623,7 @@ bottom: -130px;
 
         .solution-bottom-description {
             font-size: $font-size-md; // 1rem
-            color: $dark-blue;
+            color: $text-medium;
             line-height: 1.6;
             margin-bottom: 20px;
         }
@@ -507,11 +631,10 @@ bottom: -130px;
         .highlight-text {
             color: $primary-blue;
             font-weight: 900;
-            font-size: 1.2em;
         }
 
         .btn-cta-bottom {
-            @include button-styles($primary-blue, none, $white, 15px 30px, 30px, $font-size-md, 500);
+            @include button-styles($primary-blue, none, $white, 15px 30px, 10px, $font-size-md, 500);
             margin-top: 20px;
 
             &:hover {
@@ -544,6 +667,7 @@ bottom: -130px;
         .carousel-control-prev {
             right: 40px;
         }
+
         .carousel-control-next {
             right: 0px;
         }
@@ -571,6 +695,7 @@ bottom: -130px;
 
     // Carousel controls visible for tablets (md breakpoint)
     .solutions-section {
+
         .carousel-control-prev,
         .carousel-control-next {
             display: flex; // Keep visible for tablet
@@ -581,6 +706,7 @@ bottom: -130px;
         .carousel-control-prev {
             right: 30px;
         }
+
         .carousel-control-next {
             right: 0px;
         }
@@ -610,6 +736,7 @@ bottom: -130px;
 
     // Hide carousel controls for mobile (xs/sm breakpoints)
     .solutions-section {
+
         .carousel-control-prev,
         .carousel-control-next {
             display: none; // Hide controls on mobile as only 1 card is visible
@@ -624,7 +751,8 @@ bottom: -130px;
 .about-us-header {
     position: relative;
     padding: 80px 0;
-    background: $light-gray-bg;
+        background: url(../assets/img/solutions-bg.png) no-repeat;
+    //background: $light-gray-bg;
     overflow: hidden;
 
     &::before {
@@ -658,7 +786,7 @@ bottom: -130px;
 .about-us-intro-text {
     font-size: $font-size-md;
     line-height: 1.4;
-    color: $dark-blue;
+    color: $text-medium;
     margin-bottom: 1.5rem;
 }
 
@@ -668,12 +796,13 @@ bottom: -130px;
 }
 
 .about-us-commitment-section {
-    background: #00316c url('../assets/img/solution-bg-hand.png') no-repeat left center;
+    background: #00316c url('../assets/img/solution-bg-hand.png') no-repeat center center / cover;
     color: $white;
     padding: 100px 0;
     position: relative;
     overflow: hidden;
-/*
+
+    /*
     &::before {
         content: '';
         position: absolute;
@@ -695,9 +824,10 @@ bottom: -130px;
         margin-bottom: 1.5rem;
         line-height: 1.4;
         color: $white;
+
         strong {
             font-weight: 900;
-        background: $primary-blue;
+            background: $primary-blue;
         }
     }
 
@@ -708,25 +838,22 @@ bottom: -130px;
     }
 }
 
-.about-us-handshake-placeholder {
-    height: 300px;
-    display: flex;
-}
 
 .about-us-evolution-section {
     padding: 80px 0 0px;
     background: $light-gray-bg;
+
     .about-us-evolution-title {
-      color: $dark-blue;
-      font-size: $font-size-lg;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
+        color: $dark-blue;
+        font-size: $font-size-lg;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
     }
 
     .about-us-evolution-text {
-      font-size: $font-size-md;
-      line-height: 1.8;
-      color: $dark-blue;
+        font-size: $font-size-md;
+        line-height: 1.8;
+        color: $text-medium;
     }
 }
 
@@ -746,41 +873,57 @@ bottom: -130px;
         color: $primary-blue;
         font-size: $font-size-2xl;
         font-weight: 900;
-        margin-bottom: 1.5rem;
+        margin-bottom: 2.5rem;
     }
+
     .about-us-map-text {
         font-size: $font-size-md;
-        color: $dark-blue;
-        line-height: 1.2;
-        margin-bottom: 1.5rem;
+        color: $text-medium;
+        line-height: 1.4;
+        margin-bottom: 2.5rem;
     }
+        .btn-cta-bottom {
+            @include button-styles($primary-blue, none, $white, 15px 30px, 10px, $font-size-md, 500);
+            margin-top: 20px;
+
+            &:hover {
+                background: $dark-blue;
+                color: $white;
+                transform: translateY(-2px);
+                box-shadow: 0 10px 30px rgba($primary-blue, 0.3);
+            }
+        }    
 }
 
-.about-us-brazil-map-placeholder {
-    height: 658px;
+.about-us-map-placeholder {
+    height: 576px;
     display: flex;
-    align-items:start;
+    align-items: start;
     justify-content: start;
     position: relative;
     overflow: hidden;
+    padding-left: 40px;
 }
 
 .about-us-values-section {
     padding: 40px 0 80px;
     background: $light-gray-bg;
+
     h3 {
         font-size: $font-size-lg;
         color: $dark-blue;
         font-weight: 700;
         margin-bottom: 2.5rem;
     }
+
     h4 {
         font-size: $font-size-md;
         color: $dark-blue;
         font-weight: 900;
         margin-bottom: 0.5rem;
     }
-    p{
+
+    p {
         font-size: $font-size-md;
         color: $dark-blue;
     }
@@ -790,11 +933,12 @@ bottom: -130px;
     background: $white;
     border-radius: 20px;
     padding: 3rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     position: relative;
 }
 
-.about-us-value-block { // Renamed from .value-section
+.about-us-value-block {
+    // Renamed from .value-section
     margin-bottom: 2rem;
 }
 
@@ -835,21 +979,28 @@ bottom: -130px;
     .about-us-commitment-title {
         font-size: 2.2rem;
     }
+
     .about-us-commitment-subtitle {
         font-size: 1.1rem;
     }
+
     .about-us-map-title {
         font-size: 2rem;
     }
-    .about-us-header, .about-us-commitment-section {
+
+    .about-us-header,
+    .about-us-commitment-section {
         padding: 60px 0;
     }
+
     .about-us-handshake-placeholder {
         height: 250px;
     }
+
     .about-us-brazil-map-placeholder {
         height: 300px;
     }
+
     .about-us-main-values-card {
         padding: 2rem;
     }
@@ -859,14 +1010,17 @@ bottom: -130px;
     .about-us-commitment-title {
         font-size: 1.8rem;
     }
+
     .about-us-brand-logo {
         font-size: 2rem;
     }
+
     .about-us-evolution-section,
     .about-us-map-section,
     .about-us-values-section {
         padding: 60px 0;
     }
+
     .about-us-main-values-card {
         padding: 1.5rem;
     }
@@ -878,13 +1032,11 @@ bottom: -130px;
 
 .api-prolynk-section {
     padding: 40px 0;
-  background-image: linear-gradient(
-    $light-gray-bg 0%,
-    $light-gray-bg 80%,
-    $blue-bg 80%,
-    $blue-bg 100%
-  );
-  background-size: cover; 
+    background-image: linear-gradient($light-gray-bg 0%,
+            $light-gray-bg 80%,
+            $blue-bg 80%,
+            $blue-bg 100%);
+    background-size: cover;
     text-align: center;
 }
 
@@ -919,7 +1071,9 @@ bottom: -130px;
             // Ajusta o espaçamento para 40px entre os cards
             margin-left: -20px;
             margin-right: -20px;
-            > div { // As colunas (col-md-4, etc.)
+
+            >div {
+                // As colunas (col-md-4, etc.)
                 padding-left: 20px;
                 padding-right: 20px;
             }
@@ -928,10 +1082,10 @@ bottom: -130px;
 }
 
 .api-prolynk-card {
-    background: $white;
+    //background: $white;
     border-radius: 10px;
     padding: 20px; // Padding interno para a imagem
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    //box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     transition: all $transition-speed;
     width: 100%; // Ajusta-se à largura da coluna
     // Removido max-width: 160px para ajuste automático
@@ -940,23 +1094,30 @@ bottom: -130px;
     align-items: center; // Centraliza a imagem verticalmente
     justify-content: center; // Centraliza a imagem horizontalmente
     text-align: center;
-    border: 1px solid #e0e0e0;
+    //border: 1px solid #e0e0e0;
     img {
         max-width: 100%; // Garante que a imagem não transborde o card
         max-height: 100%; // Garante que a imagem não transborde o card
         object-fit: contain; // Preserva a proporção da imagem
-        
-    transition: all $transition-speed;
+
+        transition: all $transition-speed;
+        filter: grayscale(1);
+        opacity: 0.7;
+        &.no-filter {
+            opacity: 1;
+        }
     }
 
     // Removendo estilos de h5 e p, pois não existem mais dentro do card do carousel
-    h5, p {
+    h5,
+    p {
         display: none;
     }
 
     &:hover {
         transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        //box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+
         img {
             transform: scale(1.1);
         }
@@ -973,7 +1134,7 @@ bottom: -130px;
     opacity: 1;
     color: $primary-blue;
     font-size: 2.5rem;
-    background: none!important;
+    background: none !important;
     border: none;
     transition: all $transition-speed;
 
@@ -984,9 +1145,10 @@ bottom: -130px;
 
     .carousel-control-prev-icon,
     .carousel-control-next-icon {
-        background-image: none!important; // Remove o ícone padrão do Bootstrap
+        background-image: none !important; // Remove o ícone padrão do Bootstrap
 
-    color: $primary-blue;        
+        color: $primary-blue;
+
         &::before {
             font-family: "Font Awesome 6 Free";
             font-weight: 900;
@@ -994,8 +1156,10 @@ bottom: -130px;
         }
     }
 }
+
 .api-prolynk-carousel-control-prev {
     left: -60px;
+
     .carousel-control-prev-icon::before {
         content: "\f053";
     }
@@ -1003,18 +1167,21 @@ bottom: -130px;
 
 .api-prolynk-carousel-control-next {
     right: -60px;
+
     .carousel-control-next-icon::before {
         content: "\f054";
     }
 }
+
 .api-prolynk-static-cards-row {
     margin-top: 40px;
+
     .api-prolynk-static-card {
         background: $white;
         border-radius: 10px;
         padding: 30px;
-    transition: all $transition-speed;       
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        transition: all $transition-speed;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -1022,10 +1189,11 @@ bottom: -130px;
         text-align: center;
         border: 1px solid #e0e0e0;
 
-    &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    }
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
         h5 {
             font-size: $font-size-lg;
             font-weight: 600;
@@ -1046,6 +1214,7 @@ bottom: -130px;
     .api-prolynk-carousel-control-prev {
         left: -40px;
     }
+
     .api-prolynk-carousel-control-next {
         right: -40px;
     }
@@ -1069,10 +1238,12 @@ bottom: -130px;
         .carousel-item .row {
             justify-content: center;
         }
+
         // Em telas menores, as colunas irão empilhar ou ter menos cards por linha,
         // então a largura se ajustará automaticamente.
-        .col-md-4, .col-sm-6 {
-             max-width: 100%;
+        .col-md-4,
+        .col-sm-6 {
+            max-width: 100%;
         }
     }
 
@@ -1084,6 +1255,7 @@ bottom: -130px;
     .api-prolynk-static-cards-row {
         margin-top: 20px;
     }
+
     .api-prolynk-static-card {
         padding: 20px;
     }
@@ -1096,20 +1268,20 @@ bottom: -130px;
         margin: 0 auto 20px; // Centraliza e adiciona margem inferior quando empilhado
     }
 }
+
 /* Plans Section Styles */
 .plans-section {
     padding: 20px 0;
-  background-image: linear-gradient(
-    $blue-bg 0%,
-    $blue-bg 70%,
-    $light-gray-bg 70%,
-    $light-gray-bg 100%
-  );
-  background-size: cover; 
+    background-image: linear-gradient($blue-bg 0%,
+            $blue-bg 70%,
+            $light-gray-bg 70%,
+            $light-gray-bg 100%);
+    background-size: cover;
+
     .container {
-        max-width: 1200px;
         margin: 0 auto;
     }
+
     .plans-title {
         font-size: $font-size-2xl;
         font-weight: 900;
@@ -1125,7 +1297,7 @@ bottom: -130px;
 
     .plan-card {
         background: $white;
-        margin: 20px 0;
+        margin: 0 20px;
         border-radius: 15px;
         padding: 0; // Padding será interno para as subseções
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
@@ -1142,27 +1314,33 @@ bottom: -130px;
         }
 
         .plan-title-button {
-            color: $white;
+            color: $text-medium;
             padding: 5px 0;
             width: 128px;
             margin: 20px 0 0 20px;
             border-radius: 8px;
             text-align: center;
+            border: 1px solid $text-medium;
             h3 {
                 font-size: $font-size-md;
                 font-weight: 700;
                 margin: 0;
                 color: inherit; // Herda a cor do pai
             }
+/*
             &.silver {
                 background: $silver-bg;
             }
+
             &.gold {
                 background: $gold-bg;
             }
+
             &.platinum {
                 background: $platinum-bg;
             }
+
+            */
         }
 
         .plan-price {
@@ -1171,6 +1349,7 @@ bottom: -130px;
             color: $black;
             margin: 20px 0 10px;
             text-align: center;
+
             .plan-price-month {
                 font-size: 0.5em;
                 font-weight: normal;
@@ -1186,7 +1365,8 @@ bottom: -130px;
             padding: 0 20px;
             margin-bottom: 10px;
             line-height: 1.4;
-            min-height: 4em; /* Garante que duas linhas tenham espaço, mesmo que o texto seja menor */
+            min-height: 4em;
+            /* Garante que duas linhas tenham espaço, mesmo que o texto seja menor */
         }
 
         .plan-features {
@@ -1201,27 +1381,36 @@ bottom: -130px;
                 margin-bottom: 5px;
                 text-align: left;
                 display: flex;
-                align-items: center;
+                align-items: flex-start;
 
                 i {
-                    color: $white;
+                    color: $primary-blue;
                     margin-right: 10px;
-                    font-size: 0.5em; // Ícone menor
-                       background: $primary-blue;
-                       border-radius: 30px;
-    width: 14px;
-    line-height: 14px;
-    text-align: center;                       
+                    font-size: 1em; // Ícone menor
+                    border-radius: 30px;
+                    width: 14px;
+                    line-height: 25px;
+                    text-align: center;
+                }
+                .highlight {
+                    font-weight: 700;
+                    display: contents;
+                }
+                .plan-note {
+                    font-size: x-small;
+                    color: $text-medium;
+                    padding: 20px 20px 0px 20px;
                 }
             }
         }
 
         .plan-button {
             @include button-styles($primary-blue, none, $white, 15px 0, 0, $font-size-md, 500);
-            width:85%;  // Botão ocupa toda a largura do card
+            width: 85%; // Botão ocupa toda a largura do card
             border-radius: 15px; // Apenas as bordas inferiores arredondadas
             padding: 18px 0; // Maior padding para o botão ocupar a largura
             margin: 0 auto 20px; // Centraliza o botão
+
             &:hover {
                 background: $dark-blue;
                 color: $white;
@@ -1243,18 +1432,23 @@ bottom: -130px;
     .plan-card {
         padding: 0; // Ajuste o padding se necessário
     }
+
     .plan-price {
         font-size: 2.5rem;
     }
+
     .plan-price-month {
         font-size: 0.9rem;
     }
+
     .plan-description {
         font-size: 1rem;
     }
+
     .plan-features li {
         font-size: 0.95rem;
     }
+
     .plan-button {
         font-size: 1rem;
         padding: 15px 0;
@@ -1265,46 +1459,58 @@ bottom: -130px;
     .plans-section {
         padding: 60px 0;
     }
+
     .plans-title {
         font-size: 1.8rem;
     }
+
     .plans-subtitle {
         font-size: 1.1rem;
         margin-bottom: 30px;
     }
+
     .plan-card {
         margin-bottom: 30px;
     }
+
     .plan-description {
-        min-height: auto; /* Remove altura mínima em mobile */
+        min-height: auto;
+        /* Remove altura mínima em mobile */
     }
 }
 
 @media (max-width: 576px) {
     .plan-card {
         padding: 0;
+
         .plan-title-button {
             padding: 15px 0;
         }
+
         .plan-price {
             font-size: 2rem;
             margin: 15px 0 8px;
         }
+
         .plan-price-month {
             font-size: 0.8rem;
         }
+
         .plan-description {
             font-size: 0.9rem;
             padding: 0 15px;
             margin-bottom: 20px;
         }
+
         .plan-features {
             padding: 0 20px 15px;
+
             li {
                 font-size: 0.9rem;
                 margin-bottom: 10px;
             }
         }
+
         .plan-button {
             font-size: 0.9rem;
             padding: 12px 0;
@@ -1331,6 +1537,7 @@ bottom: -130px;
             margin-bottom: 20px;
         }
     }
+
     .faq-section-subtitle {
         font-size: $font-size-lg;
         color: $primary-blue;
@@ -1347,7 +1554,7 @@ bottom: -130px;
 
     .accordion-item {
         margin-bottom: 15px;
-        border: 1px solid $light-border;
+        //border: 1px solid $light-border;
         border-radius: 8px;
         overflow: hidden;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
@@ -1372,8 +1579,8 @@ bottom: -130px;
         transition: background-color $transition-speed, color $transition-speed;
 
         &:not(.collapsed) {
-            background-color: $primary-blue;
-            color: $white;
+            //background-color: $primary-blue;
+            //color: $white;
         }
 
         &:focus {
@@ -1383,15 +1590,15 @@ bottom: -130px;
         }
 
         &::after {
-            
+
             color: $primary-blue;
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e"); // Default Bootstrap arrow
             transition: transform $transition-speed;
         }
-        
+
         &:not(.collapsed)::after {
             filter: none; // Resets filter for active state to show white arrow
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e"); // White arrow for active state
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230086CD'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e"); // White arrow for active state
             transform: rotate(-180deg);
         }
     }
@@ -1403,35 +1610,40 @@ bottom: -130px;
         line-height: 1.6;
         background-color: $white;
     }
-            .btn-cta-bottom {
-            @include button-styles($primary-blue, none, $white, 15px 30px, 30px, $font-size-md, 500);
-            margin-top: 20px;
 
-            &:hover {
-                background: $dark-blue;
-                color: $white;
-                transform: translateY(-2px);
-                box-shadow: 0 10px 30px rgba($primary-blue, 0.3);
-            }
+    .btn-cta-bottom {
+        @include button-styles($primary-blue, none, $white, 15px 30px, 30px, $font-size-md, 500);
+        margin-top: 20px;
+
+        &:hover {
+            background: $dark-blue;
+            color: $white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba($primary-blue, 0.3);
         }
+    }
 }
 
 // Mobile adjustments for FAQ section
 @media (max-width: 576px) {
     .faq-section {
         padding: 40px 0;
+
         .section-title {
             font-size: 1.5rem;
             margin-bottom: 20px;
         }
+
         .accordion-button {
             font-size: 0.95rem;
             padding: 15px 20px;
         }
+
         .accordion-body {
             font-size: 0.9rem;
             padding: 15px 20px;
         }
+
         .faq-subtitle {
             font-size: 1.2rem;
             margin-top: 25px;
@@ -1439,6 +1651,7 @@ bottom: -130px;
         }
     }
 }
+
 /*==============================================
 // Footer Styles
 ==============================================*/
@@ -1491,6 +1704,7 @@ bottom: -130px;
 
     // Responsive adjustments
     @media (max-width: 767.98px) {
+
         .footer-logo-col,
         .footer-contact-col {
             text-align: center; // Center content on small screens
