@@ -1,4 +1,7 @@
-// Font Family Definitions
+//==============================================
+// Font Family
+//==============================================
+
 @font-face {
     font-family: 'Avenir';
     src: url('../assets/fonts/AvenirLTStd-Heavy.woff2') format('woff2'),
@@ -67,17 +70,6 @@ $text-medium: #3C3C3B;
 $bootstrap-info-blue: #42a5f5; // Azul mais claro do gradiente dos ícones
 
 
-
-// Novas variáveis do código fornecido
-$about-us-primary-blue: #2B5A9E;
-$about-us-secondary-blue: #4A90E2;
-$about-us-light-blue: #E8F2FF;
-$about-us-dark-blue: #1A4480;
-$about-us-accent-orange: #FF6B35;
-$about-us-text-dark: #2C3E50;
-$about-us-text-light: #6C757D;
-
-// Novas variáveis para a seção API ProLynk (reutilizando existentes onde possível)
 $api-prolynk-card-bg: #F8F9FA; // Um cinza claro para o fundo dos cards da API
 
 
@@ -90,11 +82,7 @@ $font-size-lg: 2.2em;
 $font-size-xl: 3.6em;
 $font-size-2xl: 4.8em;
 $font-size-3xl: 7.6em; // Para navbar-brand em mobile
-$font-size-solutions-title: 2.5rem;
-$font-size-solutions-subtitle: 1.5rem;
-$font-size-card-title: 1.1rem;
-$font-size-card-description: 0.9rem;
-$font-size-bottom-title: 2rem; // Renomeada para ser mais genérica se for usada em outros lugares
+
 
 // Variáveis de Transições
 $transition-speed: 0.3s ease;
@@ -157,7 +145,7 @@ body {
         backdrop-filter: blur(10px);
         padding: 15px 0;
         box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
-        position: fixed !important; // Adicionado aqui para garantir que fique fixo
+        position: fixed !important;
     }
 
     &-brand {
@@ -165,7 +153,7 @@ body {
         background: url('../assets/img/prolynk-logo-top.svg') no-repeat center center / contain;
         width: 250px;
         height: 79px;
-        text-indent: -9999px; // Esconde o texto, mas mantém acessível
+        text-indent: -9999px; 
         display: block;
     }
 
@@ -214,8 +202,10 @@ body {
     }
 }
 
+/*==============================================
+// Hero
+==============================================*/
 
-/* Main hero section */
 .hero-section {
     //background: linear-gradient(135deg, $primary-blue 0%, $dark-blue 100%);
     background: url('../assets/img/hero-bg.png') no-repeat center center / cover;
@@ -223,7 +213,6 @@ body {
     position: relative;
 }
 
-/* Hero content */
 .hero-content {
     padding: 25px 0 80px;
     position: relative;
@@ -263,7 +252,6 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
     }
 }
 
-/* Hero image and cards section */
 .hero-visual {
     display: flex;
     align-items: center;
@@ -277,7 +265,7 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
 }
 
 /*==============================================
-// Messaging Card 3D Transform Styles
+// 3D CARDS
 ==============================================*/
 .messaging-card {
     background: rgba(255, 255, 255, 0.04);
@@ -338,7 +326,7 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
         transition: transform 0.1s ease-out;
     }
 
-    // Enhanced hover effects for text elements
+   
     &:hover .messaging-card-title {
         transform: translateZ(30px);
     }
@@ -382,8 +370,9 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
     }
 }
 
-
-/* Responsive design */
+/*==============================================
+// HERO Responsivo
+==============================================*/
 @media (max-width: 1200px) {}
 
 @media (max-width: 992px) {
@@ -416,11 +405,13 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
     }
 }
 
-/* Solutions Section (Consolidated) */
+/*==============================================
+// Soluções
+==============================================*/
 .solutions-section {
-    background: $light-gray-bg; // Mantém o fundo da seção original
-    padding: 80px 0; // Mantém o padding da seção original
-    position: relative; // Added for positioning carousel controls
+    background: $light-gray-bg; 
+    padding: 80px 0; 
+    position: relative; 
     background: url(../assets/img/solutions-bg.png) no-repeat center bottom / cover;
 
     .solution-bottom-image-underlay {
@@ -469,7 +460,7 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
 
 
     .feature-cards-row {
-        margin-top: 0; // Removed margin top as carousel now handles spacing
+        margin-top: 0; 
     }
 
     .solution-card {
@@ -522,26 +513,26 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
         }
     }
 
-    /* Carousel Specific Styles */
+    /* carousel */
     .solutions-carousel {
-        position: relative; // Needed for absolute positioning of controls
-        margin-top: 50px; // Adjust as needed to position below header content
+        position: relative; 
+        margin-top: 50px; 
     }
 
     .carousel-inner {
-        padding: 30px 0 20px; // Provide some space below the cards if controls are at the top
+        padding: 30px 0 20px; /
     }
 
     .carousel-item {
-        padding: 0 35px; // Add some horizontal padding to the carousel item to create spacing
+        padding: 0 35px; 
 
         .row {
-            margin-left: -25px; // Counteract default Bootstrap col padding and increase
-            margin-right: -25px; // Counteract default Bootstrap col padding and increase
+            margin-left: -25px; 
+            margin-right: -25px; 
 
             >div {
-                padding-left: 25px; // Custom padding for columns to control card spacing
-                padding-right: 25px; // Custom padding for columns to control card spacing
+                padding-left: 25px; 
+                padding-right: 25px; 
             }
         }
     }
@@ -550,13 +541,13 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
     .carousel-control-next {
         position: absolute;
         width: auto;
-        opacity: 1; // Always visible when shown
-        color: $primary-blue; // Color of the arrow icon
+        opacity: 1; 
+        color: $primary-blue; 
         font-size: 2rem;
         background: none;
         border: none;
         transition: all $transition-speed;
-        margin-top: 0; // Ensure no default Bootstrap margin interferes
+        margin-top: 0; 
 
         &:hover {
             color: $dark-blue;
@@ -565,10 +556,10 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
 
         .carousel-control-prev-icon,
         .carousel-control-next-icon {
-            background-image: none; // Remove default Bootstrap arrow image
+            background-image: none; 
 
             &::before {
-                font-family: "Font Awesome 6 Free"; // Use Font Awesome
+                font-family: "Font Awesome 6 Free"; 
                 font-weight: 900;
                 display: inline-block;
             }
@@ -576,19 +567,19 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
     }
 
     .carousel-control-prev {
-        left: auto; // Override default left positioning
+        left: auto; 
 
         .carousel-control-prev-icon::before {
-            content: "\f053"; // Font Awesome chevron-left icon
+            content: "\f053"; 
         }
     }
 
     .carousel-control-next {
-        // Position right, adjust as needed
-        left: auto; // Override default left positioning
+        
+        left: auto; 
 
         .carousel-control-next-icon::before {
-            content: "\f054"; // Font Awesome chevron-right icon
+            content: "\f054"; 
         }
     }
 
@@ -596,8 +587,8 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
 
     .solution-bottom-content {
 
-        padding-top: 50px; // Adiciona um espaçamento entre os cards e esta nova seção
-        padding-bottom: 0; // O padding da .solutions-section já cuidará disso.
+        padding-top: 50px; 
+        padding-bottom: 0; 
 
         .solution-bottom-image-placeholder {
             width: 100%;
@@ -606,23 +597,23 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 30px; // Mantido para dispositivos menores, no desktop o grid cuida da margem
+            margin-bottom: 30px; 
             position: relative;
         }
 
         .solution-bottom-text {
-            padding-left: 40px; // Mantido o padding original de bottom-content
+            padding-left: 40px;
         }
 
         .solution-bottom-title {
-            font-size: $font-size-xl; // Reutiliza a variável
+            font-size: $font-size-xl; 
             font-weight: 900;
             color: $dark-blue;
             margin-bottom: 30px;
         }
 
         .solution-bottom-description {
-            font-size: $font-size-md; // 1rem
+            font-size: $font-size-md; 
             color: $text-medium;
             line-height: 1.6;
             margin-bottom: 20px;
@@ -647,7 +638,7 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
     }
 }
 
-/* Responsive adjustments */
+/* Responsivo */
 @media (max-width: 1200px) {
     .solution-card {
         padding: 25px 15px;
@@ -662,7 +653,7 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
         font-size: 28px;
     }
 
-    // Adjust carousel control position for slightly smaller desktops
+
     .solutions-section {
         .carousel-control-prev {
             right: 40px;
@@ -683,23 +674,23 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
         font-size: 1.3rem;
     }
 
-    // Ajustes para a parte inferior da seção de soluções em telas menores
+
     .solutions-section .solution-bottom-text {
-        padding-left: 0; // Remove o padding-left em telas menores
-        margin-top: 30px; // Adiciona margem superior
+        padding-left: 0; 
+        margin-top: 30px; 
     }
 
     .solutions-section .solution-bottom-title {
         font-size: 1.7rem;
     }
 
-    // Carousel controls visible for tablets (md breakpoint)
+    
     .solutions-section {
 
         .carousel-control-prev,
         .carousel-control-next {
-            display: flex; // Keep visible for tablet
-            top: -90px; // Adjusted: Adjust top for tablet
+            display: flex; 
+            top: -90px; 
             font-size: 1.8rem;
         }
 
@@ -715,7 +706,7 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
 
 @media (max-width: 768px) {
     .solutions-section {
-        padding: 60px 0; // Ajusta o padding da seção principal
+        padding: 60px 0; 
     }
 
     .solutions-title {
@@ -734,25 +725,24 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
         margin-bottom: 20px;
     }
 
-    // Hide carousel controls for mobile (xs/sm breakpoints)
+   
     .solutions-section {
 
         .carousel-control-prev,
         .carousel-control-next {
-            display: none; // Hide controls on mobile as only 1 card is visible
+            display: none; 
         }
     }
 }
 
 //==============================================
-// About Us Section Styles
+// Quem Somos
 //==============================================
 
 .about-us-header {
     position: relative;
     padding: 80px 0;
         background: url(../assets/img/solutions-bg.png) no-repeat;
-    //background: $light-gray-bg;
     overflow: hidden;
 
     &::before {
@@ -791,7 +781,7 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
 }
 
 .about-us-highlight-text {
-    color: $about-us-secondary-blue;
+    color: $primary-blue;
     font-weight: 700;
 }
 
@@ -802,18 +792,7 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
     position: relative;
     overflow: hidden;
 
-    /*
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="0,0 100,0 80,100 0,100" fill="rgba(255,255,255,0.1)"/></svg>');
-        z-index: 1;
-    }
-*/
+
     .about-us-commitment-content {
         position: relative;
         z-index: 2;
@@ -938,7 +917,7 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
 }
 
 .about-us-value-block {
-    // Renamed from .value-section
+   
     margin-bottom: 2rem;
 }
 
@@ -974,7 +953,7 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
 }
 
 
-// Media Queries for About Us Section
+// Responsivo //
 @media (max-width: 768px) {
     .about-us-commitment-title {
         font-size: 2.2rem;
@@ -1027,7 +1006,7 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
 }
 
 //==============================================
-// API ProLynk Section Styles
+// API ProLynk 
 //==============================================
 
 .api-prolynk-section {
@@ -1068,12 +1047,11 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
 
     .carousel-item {
         .row {
-            // Ajusta o espaçamento para 40px entre os cards
             margin-left: -20px;
             margin-right: -20px;
 
             >div {
-                // As colunas (col-md-4, etc.)
+                
                 padding-left: 20px;
                 padding-right: 20px;
             }
@@ -1084,21 +1062,20 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
 .api-prolynk-card {
     //background: $white;
     border-radius: 10px;
-    padding: 20px; // Padding interno para a imagem
+    padding: 20px; 
     //box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     transition: all $transition-speed;
-    width: 100%; // Ajusta-se à largura da coluna
-    // Removido max-width: 160px para ajuste automático
-    height: 160px; // Altura fixa para o card do carousel, para manter uniformidade com a imagem
+    width: 100%; 
+    height: 160px; 
     display: flex;
-    align-items: center; // Centraliza a imagem verticalmente
-    justify-content: center; // Centraliza a imagem horizontalmente
+    align-items: center; 
+    justify-content: center; 
     text-align: center;
     //border: 1px solid #e0e0e0;
     img {
-        max-width: 100%; // Garante que a imagem não transborde o card
-        max-height: 100%; // Garante que a imagem não transborde o card
-        object-fit: contain; // Preserva a proporção da imagem
+        max-width: 100%; 
+        max-height: 100%; 
+        object-fit: contain; 
 
         transition: all $transition-speed;
         filter: grayscale(1);
@@ -1108,7 +1085,6 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
         }
     }
 
-    // Removendo estilos de h5 e p, pois não existem mais dentro do card do carousel
     h5,
     p {
         display: none;
@@ -1124,7 +1100,7 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
     }
 }
 
-// Carousel Navigation Arrows
+
 .api-prolynk-carousel-control-prev,
 .api-prolynk-carousel-control-next {
     position: absolute;
@@ -1145,7 +1121,7 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
 
     .carousel-control-prev-icon,
     .carousel-control-next-icon {
-        background-image: none !important; // Remove o ícone padrão do Bootstrap
+        background-image: none !important; 
 
         color: $primary-blue;
 
@@ -1209,7 +1185,7 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
     }
 }
 
-// Media Queries for API ProLynk Section
+// Responsivo //
 @media (max-width: 992px) {
     .api-prolynk-carousel-control-prev {
         left: -40px;
@@ -1269,7 +1245,10 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
     }
 }
 
-/* Plans Section Styles */
+//==============================================
+// Planos
+//==============================================
+
 .plans-section {
     padding: 20px 0;
     background-image: linear-gradient($blue-bg 0%,
@@ -1366,14 +1345,13 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
             margin-bottom: 10px;
             line-height: 1.4;
             min-height: 4em;
-            /* Garante que duas linhas tenham espaço, mesmo que o texto seja menor */
         }
 
         .plan-features {
             list-style: none;
             padding: 0 30px 20px;
             margin: 0;
-            flex-grow: 1; // Permite que a lista de features ocupe o espaço restante
+            flex-grow: 1; 
 
             li {
                 font-size: $font-size-md;
@@ -1406,10 +1384,10 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
 
         .plan-button {
             @include button-styles($primary-blue, none, $white, 15px 0, 0, $font-size-md, 500);
-            width: 85%; // Botão ocupa toda a largura do card
-            border-radius: 15px; // Apenas as bordas inferiores arredondadas
-            padding: 18px 0; // Maior padding para o botão ocupar a largura
-            margin: 0 auto 20px; // Centraliza o botão
+            width: 85%; 
+            border-radius: 15px; 
+            padding: 18px 0; 
+            margin: 0 auto 20px; 
 
             &:hover {
                 background: $dark-blue;
@@ -1419,7 +1397,7 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
     }
 }
 
-// Media Queries para a seção de Planos
+// Responsivo //
 @media (max-width: 992px) {
     .plans-title {
         font-size: 2rem;
@@ -1518,7 +1496,10 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
     }
 }
 
-/* FAQ Section Specific Styles */
+//==============================================
+// Perguntas Frequentes
+//==============================================
+
 .faq-section {
     background: $light-gray-bg;
     padding: 80px 0;
@@ -1597,7 +1578,7 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
         }
 
         &:not(.collapsed)::after {
-            filter: none; // Resets filter for active state to show white arrow
+            filter: none; 
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230086CD'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e"); // White arrow for active state
             transform: rotate(-180deg);
         }
@@ -1624,7 +1605,7 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
     }
 }
 
-// Mobile adjustments for FAQ section
+// Responsivo //
 @media (max-width: 576px) {
     .faq-section {
         padding: 40px 0;
@@ -1653,31 +1634,31 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
 }
 
 /*==============================================
-// Footer Styles
+// Footer 
 ==============================================*/
 .main-footer {
-    background-color: $white; // Using a dark blue from existing variables
+    background-color: $white; 
     color: $dark-blue;
-    padding: 20px 0 20px; // Adjust padding as needed
+    padding: 20px 0 20px; 
 
     .footer-top-row {
-        margin-bottom: 10px; // Space between top content and divider
+        margin-bottom: 10px; 
     }
 
     .footer-logo {
         max-width: 160px;
-        height: 50px; // Enforce placeholder size
-        display: block; // Ensure proper alignment
-        margin-left: 0; // Align left
-        margin-right: auto; // Align left
+        height: 50px; 
+        display: block; 
+        margin-left: 0; 
+        margin-right: auto; 
     }
 
     .footer-contact-info {
         a {
             color: $dark-blue;
             text-decoration: none;
-            margin: 0 15px; // Match spacing from contact-bar
-            font-size: $font-size-sm; // Use existing font size variable
+            margin: 0 15px; 
+            font-size: $font-size-sm; 
             transition: opacity $transition-speed;
 
             &:hover {
@@ -1691,36 +1672,36 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 
     }
 
     .footer-divider {
-        border-top: 1px solid rgba($black, 0.3); // Light divider
-        margin-bottom: 20px; // Space below divider
+        border-top: 1px solid rgba($black, 0.3); 
+        margin-bottom: 20px; 
     }
 
     .footer-copyright {
-        font-size: $font-size-xs; // Smaller font for copyright
-        color: $black; // Slightly faded color
-        margin-bottom: 0; // Remove default paragraph margin
-        text-align: left; // Align to the left
+        font-size: $font-size-xs; 
+        color: $black; 
+        margin-bottom: 0; 
+        text-align: left; 
     }
 
-    // Responsive adjustments
+    // Responsivo //
     @media (max-width: 767.98px) {
 
         .footer-logo-col,
         .footer-contact-col {
-            text-align: center; // Center content on small screens
+            text-align: center; 
         }
 
         .footer-logo {
-            margin: 0 auto 20px auto; // Center logo and add bottom margin
+            margin: 0 auto 20px auto; 
         }
 
         .footer-contact-info {
-            justify-content: center; // Center contact info on small screens
-            margin-bottom: 20px; // Add space below contact info before divider
+            justify-content: center; 
+            margin-bottom: 20px; 
         }
 
         .footer-copyright {
-            text-align: center; // Center copyright on small screens
+            text-align: center; 
         }
     }
 }
